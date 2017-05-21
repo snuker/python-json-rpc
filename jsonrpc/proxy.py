@@ -40,7 +40,6 @@ class ServiceProxy(object):
         return ServiceProxy(self.__serviceURL, name,self.__auth)
 
     def __call__(self, *args):
-         print self.__auth
          postdata = dumps({"method": self.__serviceName, 'params': args, 'id':'jsonrpc'})
          request = urllib2.Request(self.__serviceURL)
          if self.__auth:
