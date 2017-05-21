@@ -7,8 +7,8 @@ From: http://json-rpc.org/
 ### Changelog
 
 v 0.02 - Added basic web auth support
-=======
-Added basic web auth support
+
+
 
 
 ### Installation 
