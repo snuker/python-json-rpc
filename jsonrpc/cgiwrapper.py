@@ -1,6 +1,6 @@
-import sys, os
+import sys, os, json
 from jsonrpc import ServiceHandler
-
+import base64,urllib,urlparse
 class CGIServiceHandler(ServiceHandler):
     def __init__(self, service):
         if service == None:
@@ -17,8 +17,16 @@ class CGIServiceHandler(ServiceHandler):
             env = os.environ
         
         try:
-            contLen=int(env['CONTENT_LENGTH'])
-            data = fin.read(contLen)
+	    
+		if os.environ['REQUEST_METHOD'] == 'GET':
+			qs=urllparse.parse_qs(os.environ['QUERY_STRING'])
+			method=qs['method'][0]
+			params=json.loads(urllib.unquote_plus(base64.decodestring(qs['params'][0])))
+			rid=qs['id'][0]
+			data=json.dumps({'params':params,'method':method,'id':rid})
+		else:
+         	   contLen=int(env['CONTENT_LENGTH'])
+         	   data = fin.read(contLen)
         except Exception, e:
             data = ""
 

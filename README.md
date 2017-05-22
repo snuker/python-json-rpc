@@ -6,6 +6,7 @@ From: http://json-rpc.org/
 
 ### Changelog
 
+v 0.03 - Added GET request support for cgiwrapper
 v 0.02 - Added basic web auth support
 
 
@@ -18,7 +19,7 @@ $ git clone https://github.com/snuker/python-json-rpc.git
 ```
 As root/administrator install the package running the provided setup script. 
 ```
-$ cd trunk/python-jsonrpc
+$ cd python-json-rpc
 $ python setup.py install
 ```
 
